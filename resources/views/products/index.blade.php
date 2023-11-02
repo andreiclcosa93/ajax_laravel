@@ -60,7 +60,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <a href="#" class="btn btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add Product</a>
+                    <a href="#" class="btn btn-success float-end mb-3 my-4" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add Product</a>
                 </div>
 
                 <div class="card-body">
@@ -78,17 +78,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td >
-                                        <a href="" class="btn btn-warning">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -106,8 +96,36 @@
 
         $(document).ready(function () {
 
+
+            // show product ######################
+            showProduct();
+            function showProduct()
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "/show-products",
+                    dataType: "json",
+                    success: function (response) {
+                        $('tbody').html("");
+                        $.each(response.products, function (key, item) {
+                            $('tbody').append('<tr>\
+                                <td>'+item.id+'</td>\
+                                <td>'+item.category_name+'</td>\
+                                <td>'+item.name+'</td>\
+                                <td>'+item.price+'</td>\
+                                <td>'+item.quantity+'</td>\
+                                <td><button type="button" value="'+item.id+'" class="edit_product btn btn-warning">Edit</button>\
+                                    <button type="button" value="'+item.id+'" class="delete_product btn btn-danger">Delete</button></td>\
+                            </tr>');
+                        });
+                    }
+                });
+            }
+            // end of show product  ######################
+
+            // add product  ######################
             $(document).on('click', '.add_product', function (e) {
-                    e.preventDefault();
+                e.preventDefault();
 
                     var data = {
                         'category_name': $('.category_name').val(),
@@ -144,11 +162,13 @@
                                 $('#success_message').text(response.message)
                                 $('#AddProductModal').modal('hide');
                                 $('#AddProductModal').find('input').val("");
+                                showProduct();
                             }
                         }
                     });
 
-                });
+            });
+             // end of add product  ######################
 
         });
 
