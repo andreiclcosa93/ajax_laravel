@@ -13,10 +13,12 @@
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # ajax_laravel
 
-![3screencapture-127-0-0-1-8000-products](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/5dc36837-76b3-4ea2-8182-c795120e0f7f)
 
-![2screencapture-127-0-0-1-8000-products-edit](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/7ae7c2d4-e717-4810-bf47-257ced715867)
+![0screencapture-127-0-0-1-8000-products](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/46f1bfd3-8957-49fa-9a79-d820b6b809e0)
 
 ![1screencapture-127-0-0-1-8000-products](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/deab5801-e7d9-447b-b6cd-6f8d390a9a52)
 
-![0screencapture-127-0-0-1-8000-products](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/46f1bfd3-8957-49fa-9a79-d820b6b809e0)
+![2screencapture-127-0-0-1-8000-products-edit](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/7ae7c2d4-e717-4810-bf47-257ced715867)
+
+![3screencapture-127-0-0-1-8000-products](https://github.com/andreiclcosa93/ajax_laravel/assets/100482638/5dc36837-76b3-4ea2-8182-c795120e0f7f)
+
