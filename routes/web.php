@@ -17,3 +17,9 @@ Route::get('show-products', [ProductController::class, 'showProduct']);
 
 // add products
 Route::post('products-store', [ProductController::class, 'store']);
+
+// show edit prod
+Route::get('edit-product/{id}', [ProductController::class, 'product']);
+
+// update product
+Route::put('update-product/{id}', [ProductController::class, 'updateProduct']);
