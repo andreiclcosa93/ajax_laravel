@@ -20,3 +20,4 @@ yarn-error.log
 
 /app/Http/controllers/ProductController.php
 /database/migrations
+/public/assets
