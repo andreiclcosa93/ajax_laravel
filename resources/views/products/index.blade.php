@@ -89,6 +89,33 @@
 </div>
 {{-- end of modal - edit products --}}
 
+
+{{-- modal - delete products --}}
+<div class="modal fade" id="DeleteProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Delete Product</h1>
+                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="delete_prod_id">
+                <h5 class="alert alert-danger text-center">Are you sure want to delete this data?</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger delete_product_btn">Yes</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{-- end of modal - delete products --}}
+
+
+
 <div class="container-fluid px-4">
     <h1 class="mt-4">View Products</h1>
     <ol class="breadcrumb mb-4">
@@ -156,7 +183,7 @@
                                     <td>'+item.id+'</td>\
                                     <td>'+item.category_name+'</td>\
                                     <td>'+item.name+'</td>\
-                                    <td>'+item.price+'</td>\
+                                    <td>$'+item.price+'</td>\
                                     <td>'+item.quantity+'</td>\
                                     <td><button type="button" value="'+item.id+'" class="edit_product btn btn-warning">Edit</button>\
                                         <button type="button" value="'+item.id+'" class="delete_product btn btn-danger">Delete</button></td>\
@@ -307,6 +334,49 @@
 
                 });
             // end of update product ############################
+
+
+
+            // delete product ############################
+                $(document).on('click', '.delete_product', function (e) {
+                    e.preventDefault();
+                    var prod_id = $(this).val();
+
+                    $('#delete_prod_id').val(prod_id);
+                    $('#DeleteProductModal').modal('show');
+
+                });
+
+                $(document).on('click', '.delete_product_btn', function (e) {
+                    e.preventDefault();
+
+                    $(this).text("Deleting");
+
+                    var prod_id = $('#delete_prod_id').val();
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/delete-product/"+prod_id,
+                        success: function (response) {
+
+                            $('#success_message').addClass('alert alert-success');
+                            $('#success_message').text(response.message);
+                            $('#DeleteProductModal').modal('hide');
+                            $('.delete_product_btn').text("Yes Delete");
+                            showProduct();
+
+                        }
+                    });
+
+                });
+
+            // end of delete product ############################
 
 
         });

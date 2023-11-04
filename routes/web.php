@@ -23,3 +23,6 @@ Route::get('edit-product/{id}', [ProductController::class, 'product']);
 
 // update product
 Route::put('update-product/{id}', [ProductController::class, 'updateProduct']);
+
+// delete product
+Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct']);
